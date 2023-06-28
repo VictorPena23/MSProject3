@@ -1,6 +1,6 @@
 const express = require('express')
 
-const Patient = require('../models/patientModel')
+const patient = require('../models/patientModel')
 
 const {
     createPatient,
@@ -8,7 +8,7 @@ const {
     getPatient,
     deletePatient,
     updatePatient,
-} = require('../controllers/patientController')
+} = require ('../controller/patientController')
 
 const router = express.Router()
 

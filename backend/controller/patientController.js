@@ -1,9 +1,9 @@
-const Patient = require('../models/patientModel')
+const patient = require('../models/patientModel')
 const mongoose = require('mongoose')
 
 //get all patients
 const getPatients = async (req,res) =>{
-    const patients = await Patient.find({}).sort({createdAt:-1})
+    const patients = await find({}).sort({createdAt:-1})
 
     res.status(200).json(patients)
 }
@@ -12,11 +12,11 @@ const getPatients = async (req,res) =>{
 const getPatient = async (req,res) => {
     const {id} = req.params
 
-    if(!mongoose.Types.ObjectId.isValid(id)){
+    if(!Types.ObjectId.isValid(id)){
         return res.status(404).json({error: 'No Such Patient'})
     }
 
-    const patient = await Patient.findById(id)
+    const patient = await findById(id)
 
     if(!patient) {
         return res.status(400).json({error: 'No Such Patient'})
@@ -30,7 +30,7 @@ const createPatient = async(req,res) => {
     const {firstName, age, mobile} = req.body
 
     try{
-        const patient = await Patient.create({firstName, age, mobile})
+        const patient = await create({firstName, age, mobile})
         res.status(200).json(patient)
     }catch(error) {
         res.status(400).json({error: error.message})
@@ -41,11 +41,11 @@ const createPatient = async(req,res) => {
 const deletePatient = async (req, res) => {
     const { id } = req.params
 
-    if(!mongoose.Types.ObjectId.isValid(id)){
+    if(!Types.ObjectId.isValid(id)){
         return res.status(404).json({error: 'No Such Patient'})
     }
 
-    const patient = await Patient.findOneAndDelete({_id: id})
+    const patient = await findOneAndDelete({_id: id})
 
     if(!patient) {
         return res.status(404).json({error: 'No Such Patient'})
@@ -59,11 +59,11 @@ const deletePatient = async (req, res) => {
 const updatePatient = async (req,res) => {
     const{ id } = req.params
 
-    if(!mongoose.Types.ObjectId.isValid(id)){
+    if(!Types.ObjectId.isValid(id)){
         return res.status(404).json({error: 'No Such Patient'})
     }
 
-    const patient = await Patient.findOneAndUpdate({_id: id},{
+    const patient = await findOneAndUpdate({_id: id},{
         ...req.body
     })
 
