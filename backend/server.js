@@ -4,7 +4,7 @@ const express = require('express')
 
 const mongoose = require('mongoose')
 
-const patientRoutes = require('./routes/patientRoute')
+const patientRoutes = require('./Routes/patientRoute')
 
 //express app
 const app = express()
