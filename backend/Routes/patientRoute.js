@@ -27,3 +27,5 @@ router.delete('/:id', deletePatient)
 
 //UPDATE a patient
 router.patch('/:id', updatePatient)
+
+module.exports = router
