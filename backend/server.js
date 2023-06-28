@@ -10,15 +10,15 @@ const patientRoutes = require('./routes/patientRoute')
 const app = express()
 
 //middleware
-app.use(express.json())
-
 app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
 })
 
+app.use(express.json())
+
 //routes
-app.use('/api/patient', patientRoutes)
+app.use('/api/patients', patientRoutes)
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI)
