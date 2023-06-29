@@ -14,6 +14,11 @@ const PatientSchema = new Schema({
     age: {
         type: Number,
         required:true
+    },
+    mobile:{
+        type: Number,
+        required: true, 
+        minlength: [10, "Please Enter a valid Mobile Number"],
     }
 } ,{timestamps: true})
 

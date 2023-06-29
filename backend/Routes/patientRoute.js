@@ -1,6 +1,6 @@
 const express = require('express')
 
-const patient = require('../models/patientModel')
+const Patient = require('../models/patientModel')
 
 const {
     createPatient,
