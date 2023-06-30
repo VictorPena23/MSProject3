@@ -1,33 +1,36 @@
-import { useEffect, useState } from "react"
+import { useEffect } from 'react'
+import { usePatientsContext } from '../hooks/usePatientsContext'
+import PatientDetails from '../components/PatientDetails'
 
-// components
-import WorkoutDetails from "../components/WorkoutDetails"
+import PatientForm from '../components/PatientForm'
 
 const Home = () => {
-  const [workouts, setWorkouts] = useState(null)
+    const {patients, dispatch} = usePatientsContext()
 
-  useEffect(() => {
-    const fetchWorkouts = async () => {
-      const response = await fetch('/api/workouts')
-      const json = await response.json()
 
-      if (response.ok) {
-        setWorkouts(json)
-      }
-    }
+    useEffect(() => {
+        const fetchPatients = async () => {
+            const response = await fetch('/api/patients')
+            const json = await response.json()
 
-    fetchWorkouts()
-  }, [])
+            if (response.ok) {
+                dispatch({type: 'SET_PATIENTS', payload: json})
+            }
+        }
+        fetchPatients()
 
-  return (
-    <div className="home">
-      <div className="workouts">
-        {workouts && workouts.map(workout => (
-          <WorkoutDetails workout={workout} key={workout._id} />
-        ))}
-      </div>
-    </div>
-  )
+    }, [dispatch])
+
+    return (
+        <div className="home">
+            <div className="patients">
+                {patients && patients.map((patient) =>(
+                    <PatientDetails key={patient._id} patient={patient} />
+                ))}
+            </div>
+            <PatientForm/>
+        </div>
+    )
 }
 
-export default Home;
+export default Home
