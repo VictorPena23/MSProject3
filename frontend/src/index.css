@@ -1,18 +1,17 @@
-/* google font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+@import url('https://fonts.google.com/specimen/Caveat?preview.text=Meroni-Inc-Portal&preview.text_type=custom');
 
 /* layout */
 :root {
-  --primary: #1aac83;
+  --primary: #140814;
   --error: #e7195a;
 }
 body {
-  background: #f1f1f1;
+  background: rgb(96, 231, 225);
   margin: 0;
-  font-family: "Poppins";
+  font-family: "Caveat";
 }
 header {
-  background: #fff;
+  background:rgb(96, 231, 225);
 }
 header .container {
   max-width: 1400px;
@@ -30,6 +29,7 @@ header a {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
+  
 }
 
 /* homepage */
@@ -38,31 +38,76 @@ header a {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
-.workout-details {
-  background: #fff;
-  border-radius: 4px;
+.patient-details {
+  background: beige;
+  border-radius: 5px;
   margin: 20px auto;
   padding: 20px;
-  position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  position:relative;
+  box-shadow: 2px 2px 5px black;
 }
-.workout-details h4 {
+
+.patient-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
-.workout-details p {
+
+.patient-details p {
   margin: 0;
   font-size: 0.9em;
-  color: #555;
+  color: black;
 }
-.workout-details span {
+
+.patient-details span {
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
+  background: rgb(209, 209, 228);
+  padding: 5px;
   border-radius: 50%;
-  color: #333;
+  color: black;
+}
+
+/* new workout form */
+label, input {
+  display: block;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+.create {
+  background: beige;
+  border-radius: 25px;
+  margin: 20px auto;
+  padding: 20px;
+  position:relative;
+  box-shadow: 2px 2px 5px black;
+}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
 }
