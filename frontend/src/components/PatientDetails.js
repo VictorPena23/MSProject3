@@ -1,32 +1,32 @@
+import { usePatientsContext } from '../hooks/usePatientsContext'
+import { useAuthContext } from '../hooks/useAuthContext'
+
+//date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const PatientDetails = ({ patient }) => {
     const {dispatch} = usePatientsContext()
-    const {user} = useAuthContext
+    const { user } = useAuthContext()
 
     const handleClick = async () => {
-
         if (!user) {
             return
-        }
+          }
 
-        const response = await fetch('/api/patients/', + patient._id, {
+        const response = await fetch('/api/patients/' + patient._id, {
             method: 'DELETE',
-            body: JSON.stringify(patient),
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization' : `Bearer ${user.token}`
-            }
+                'Authorization': `Bearer ${user.token}`
+              }
         })
         const json = await response.json()
 
-        if (user.ok) {
+        if (response.ok) {
             dispatch({type: 'DELETE_PATIENT', payload: json})
-            return
         }
     }
 
-   return (
+    return (
         <div className="patient-details">
             <h4>{patient.name}</h4>
             <p><strong>Race:</strong>{patient.race}</p>

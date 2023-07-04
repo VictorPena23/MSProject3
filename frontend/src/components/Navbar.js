@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import {useLogout} from '../hooks/useLogOut'
+import {useLogout} from '../hooks/useLogout'
 import {useAuthContext} from '../hooks/useAuthContext'
 
 const Navbar = () => {
