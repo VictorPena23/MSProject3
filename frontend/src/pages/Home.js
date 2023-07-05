@@ -11,7 +11,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchPatients = async () => {
-            const response = await fetch('/api/workouts', {
+            const response = await fetch('/api/patients', {
               headers: {'Authorization': `Bearer ${user.token}`},
             })
 

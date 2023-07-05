@@ -1,7 +1,7 @@
 import { createContext, useReducer } from 'react'
 
 export const PatientsContext = createContext()
-
+//problem with state.patient
 export const patientsReducer = (state, action) => {
     switch (action.type) {
         case 'SET_PATIENTS':
