@@ -1,19 +1,16 @@
 require('dotenv').config()
 
 const express = require('express')
-
 const mongoose = require('mongoose')
-
 const patientRoutes = require('./routes/patientRoute')
-
-const userRoutes = require('./routes/userRoute')
+const userRoutes = require('./routes/user')
 
 //express app
 const app = express()
 
 //middleware
 //problem with response
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
     console.log(req.path, req.method)
     next()
 })
