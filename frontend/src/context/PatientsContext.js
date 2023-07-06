@@ -1,7 +1,7 @@
 import { createContext, useReducer } from 'react'
 
 export const PatientsContext = createContext()
-//problem with state.patient
+
 export const patientsReducer = (state, action) => {
     switch (action.type) {
         case 'SET_PATIENTS':
@@ -10,7 +10,7 @@ export const patientsReducer = (state, action) => {
         }
         case 'CREATE_PATIENT':
             return {
-                patients: [action.payload, ...state.patients]
+                patient: [action.payload, state.patient]
         }
         case 'DELETE_PATIENT':
             return {
@@ -32,9 +32,6 @@ export const PatientsContextProvider = ({children}) => {
         </PatientsContext.Provider>
     )
 }
-
-
-
 
 
 

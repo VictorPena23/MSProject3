@@ -1,42 +1,42 @@
-import { useEffect } from 'react'
-import { usePatientsContext } from '../hooks/usePatientsContext'
-import PatientDetails from '../components/PatientDetails'
+import { useEffect }from 'react'
+import { usePatientsContext } from "../hooks/usePatientsContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
+// components
+import PatientDetails from '../components/PatientDetails'
 import PatientForm from '../components/PatientForm'
-import { useAuthContext } from '../hooks/useAuthContext'
 
 const Home = () => {
-    const {patients, dispatch} = usePatientsContext()
-    const { user } = useAuthContext
+  const {patients, dispatch} = usePatientsContext()
+  const {user} = useAuthContext()
 
-    useEffect(() => {
-        const fetchPatients = async () => {
-            const response = await fetch('/api/patients', {
-              headers: {'Authorization': `Bearer ${user.token}`},
-            })
+  useEffect(() => {
+    const fetchPatients = async () => {
+      const response = await fetch('/api/patients', {
+        headers: {'Authorization': `Bearer ${user.token}`},
+      })
+      const json = await response.json()
 
-            const json = await response.json()
+      if (response.ok) {
+        dispatch({type: 'SET_PATIENTS', payload: json})
+      }
+    }
 
-            if (response.ok) {
-                dispatch({type: 'SET_PATIENTS', payload: json})
-            }
-        }
-        if (user) {
-            fetchPatients()
-        }
+    if (user) {
+      fetchPatients()
+    }
+  }, [dispatch, user])
 
-    }, [dispatch, user])
-
-    return (
-        <div className="home">
-            <div className="patients">
-                {patients && patients.map((patient) =>(
-                    <PatientDetails key={patient._id} patient={patient} />
-                ))}
-            </div>
-            <PatientForm/>
-        </div>
-    )
+  return (
+    <div className="home">
+      <div className="patients">
+        {patients && patients.map((patient) => (
+          <PatientDetails key={patient._id} patient={patient} />
+        ))}
+      </div>
+      <PatientForm />
+    </div>
+  )
 }
 
 export default Home
