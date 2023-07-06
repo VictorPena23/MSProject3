@@ -23,7 +23,16 @@ Some methods we used
 -GET"/"
 -router.
 -app.
+-Navigate
 
 Some properties we used
 -state
 -response.ok
+
+some functions we used 
+-switch()
+-async/await()
+-.Provider()
+-useReducer()
+-fetch()
+-
