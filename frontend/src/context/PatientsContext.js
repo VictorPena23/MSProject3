@@ -26,8 +26,6 @@ export const PatientsContextProvider = ({children}) => {
         patients:null
     })
 
-   // dispatch({type: '', payload: [{}, {}]})
-
     return (
         <PatientsContext.Provider value={{...state, dispatch}}>
             {children}
