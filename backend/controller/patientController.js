@@ -1,5 +1,5 @@
-const Patient = require('../models/patientModel')
-const mongoose = require('mongoose')
+const Patient = require('../models/patientModel');
+const mongoose = require('mongoose');
 
 //get all patients
 const getPatients = async (_req,res) =>{
